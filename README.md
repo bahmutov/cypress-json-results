@@ -67,7 +67,13 @@ You can automatically update a Markdown table inside the given file with the tes
 
 ```
 <!-- cypress-test-counts -->
-The table contents
+Test status | Count
+---|---
+Passed | 3
+Failed | 0
+Pending | 1
+Skipped | 0
+**Total** | 4
 <!-- cypress-test-counts-end -->
 ```
 
