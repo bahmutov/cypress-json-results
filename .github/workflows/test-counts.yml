@@ -1,0 +1,30 @@
+name: test counts
+on:
+  schedule:
+    - cron: '0 5 * * *'
+
+jobs:
+  test-counts:
+    name: Test counts
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Run tests 🧪
+        # https://github.com/cypress-io/github-action
+        uses: cypress-io/github-action@v2
+
+      # Always run these steps, even if the Cypress tests have failed
+      # https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idstepsif
+      - if: ${{ always() }}
+        name: Show the saved JSON file 🗄
+        run: cat results.json
+
+      - if: ${{ always() }}
+        name: Commit any changed files 💾
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Updated test counts table
+          branch: main
+          file_pattern: README.md
