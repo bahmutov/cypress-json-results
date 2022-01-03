@@ -83,7 +83,7 @@ Tip: prevent the Prettier from messing with the formatting by surrounding the ta
 
 ## Cypress test counts
 
-This repo has the following test numbers
+This repo has the following test numbers:
 
 <!-- prettier-ignore-start -->
 <!-- cypress-test-counts -->
@@ -96,6 +96,8 @@ Skipped | 0
 **Total** | 4
 <!-- cypress-test-counts-end -->
 <!-- prettier-ignore-end -->
+
+The table above is automatically updated nightly, see the [GitHub Actions workflow](./.github/workflows/test-counts.yml)
 
 ## Small print
 
