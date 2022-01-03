@@ -1,13 +1,14 @@
 {
   "name": "cypress-json-results",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Saves Cypress test results as a JSON file",
   "main": "src",
   "files": [
     "src"
   ],
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "cypress-plugin"
@@ -16,6 +17,11 @@
   "license": "MIT",
   "devDependencies": {
     "cypress": "^9.2.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "semantic-release": "^18.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/cypress-json-results.git"
   }
 }
