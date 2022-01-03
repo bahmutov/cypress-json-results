@@ -1,4 +1,4 @@
-# cypress-json-results
+# cypress-json-results ![cypress version](https://img.shields.io/badge/cypress-9.2.0-brightgreen)
 
 > Saves Cypress test results as a JSON file
 
@@ -16,11 +16,22 @@ Register this plugin from your plugin file
 // cypress/plugins/index.js
 module.exports = (on, config) => {
   // save all test results as a JSON file
-  //
+  // https://github.com/bahmutov/cypress-json-results
   require('cypress-json-results')({
     on,
     filename: 'results.json', // default filename
   })
+}
+```
+
+After the run the JSON file should contain results for all test specs that ran locally. See the [Cypress Test Statuses](https://glebbahmutov.com/blog/cypress-test-statuses/) blog post for details on the possible test status values.
+
+```json
+{
+  "cypress/integration/spec.js": {
+    "works": "passed",
+    "is pending": "pending"
+  }
 }
 ```
 
