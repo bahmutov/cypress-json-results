@@ -1,14 +1,19 @@
 {
   "name": "cypress-json-results",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Saves Cypress test results as a JSON file",
+  "main": "src",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "test": "cypress run"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cypress-plugin"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "cypress": "^9.2.0",
     "prettier": "^2.5.1"
