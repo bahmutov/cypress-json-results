@@ -12,5 +12,6 @@ module.exports = (on, config) => {
   require('../../src')({
     on,
     filename: 'results.json',
+    updateMarkdownFile: 'README.md',
   })
 }

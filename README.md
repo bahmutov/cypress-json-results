@@ -45,6 +45,58 @@ After the run the JSON file should contain results for all test specs that ran l
 }
 ```
 
+## Options
+
+### filename
+
+By default, this plugin saves the JSON result into "results.json" file. You can change the output filename using the `filename` option
+
+```js
+// https://github.com/bahmutov/cypress-json-results
+require('cypress-json-results')({
+  on,
+  filename: 'output.json',
+})
+```
+
+Note: the plugin assumes the output folder already exists
+
+### updateMarkdownFile
+
+You can automatically update a Markdown table inside the given file with the test counts. See the section below [Cypress test counts](#cypress-test-counts) for an example. The table should be surrounded with HTML comments
+
+```
+<!-- cypress-test-counts -->
+The table contents
+<!-- cypress-test-counts-end -->
+```
+
+Tip: prevent the Prettier from messing with the formatting by surrounding the table with ignore comments, see [How to configure Prettier and VSCode](https://glebbahmutov.com/blog/configure-prettier-in-vscode/).
+
+```
+<!-- prettier-ignore-start -->
+<!-- cypress-test-counts -->
+  ... table text ...
+<!-- cypress-test-counts-end -->
+<!-- prettier-ignore-end -->
+```
+
+## Cypress test counts
+
+This repo has the following test numbers
+
+<!-- prettier-ignore-start -->
+<!-- cypress-test-counts -->
+Test status | Count
+---|---
+Passed | 3
+Failed | 0
+Pending | 1
+Skipped | 0
+**Total** | 4
+<!-- cypress-test-counts-end -->
+<!-- prettier-ignore-end -->
+
 ## Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2022
