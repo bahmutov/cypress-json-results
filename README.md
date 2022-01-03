@@ -2,6 +2,8 @@
 
 > Saves Cypress test results as a JSON file
 
+Read the blog post [Cypress JSON Test Results](https://glebbahmutov.com/blog/json-test-results/).
+
 ## Install
 
 ```shell
