@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 const fs = require('fs')
+const { updateText } = require('./update-text')
 
 function registerCypressJsonResults(options = {}) {
   const defaults = {
@@ -45,6 +46,17 @@ function registerCypressJsonResults(options = {}) {
     const str = JSON.stringify(allResults, null, 2)
     fs.writeFileSync(options.filename, str + '\n')
     console.log('cypress-json-results: wrote results to %s', options.filename)
+
+    if (options.updateMarkdownFile) {
+      const markdownFile = options.updateMarkdownFile
+      const markdown = fs.readFileSync(markdownFile, 'utf8')
+      const updated = updateText(markdown, allResults.totals)
+      fs.writeFileSync(markdownFile, updated)
+      console.log(
+        'cypress-json-results: updated Markdown file %s',
+        markdownFile,
+      )
+    }
   })
 }
 
