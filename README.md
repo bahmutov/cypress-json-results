@@ -26,13 +26,21 @@ module.exports = (on, config) => {
 }
 ```
 
-After the run the JSON file should contain results for all test specs that ran locally. See the [Cypress Test Statuses](https://glebbahmutov.com/blog/cypress-test-statuses/) blog post for details on the possible test status values.
+After the run the JSON file should contain results for all test specs that ran locally and the total counts. See the [Cypress Test Statuses](https://glebbahmutov.com/blog/cypress-test-statuses/) blog post for details on the possible test status values.
 
 ```json
 {
   "cypress/integration/spec.js": {
     "works": "passed",
     "is pending": "pending"
+  },
+  "totals": {
+    "suites": 0,
+    "tests": 2,
+    "failed": 0,
+    "passed": 1,
+    "pending": 1,
+    "skipped": 0
   }
 }
 ```

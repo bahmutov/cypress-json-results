@@ -29,7 +29,19 @@ function registerCypressJsonResults(options = {}) {
     })
   })
 
-  options.on('after:run', () => {
+  options.on('after:run', (afterRun) => {
+    // add the totals to the results
+    // explanation of test statuses in the blog post
+    // https://glebbahmutov.com/blog/cypress-test-statuses/
+    allResults.totals = {
+      suites: afterRun.totalSuites,
+      tests: afterRun.totalTests,
+      failed: afterRun.totalFailed,
+      passed: afterRun.totalPassed,
+      pending: afterRun.totalPending,
+      skipped: afterRun.totalSkipped,
+    }
+
     const str = JSON.stringify(allResults, null, 2)
     fs.writeFileSync(options.filename, str + '\n')
     console.log('cypress-json-results: wrote results to %s', options.filename)
