@@ -1,8 +1,6 @@
 name: test counts
 on:
-  push:
-    branches:
-      - main
+  # update nightly
   schedule:
     - cron: '0 5 * * *'
 
