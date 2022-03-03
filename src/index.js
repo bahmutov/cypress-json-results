@@ -7,7 +7,7 @@ function registerCypressJsonResults(options = {}) {
   const defaults = {
     filename: 'results.json',
   }
-  options = { ...options, defaults }
+  options = { ...defaults, ...options }
   if (!options.on) {
     throw new Error('Missing required option: on')
   }

@@ -69,3 +69,51 @@ describe('Markdown utils', () => {
     `)
   })
 })
+
+describe('Misc utils', () => {
+  // this is NOT how merging options with defaults should work
+  // and this test is only to confirm the incorrect behavior
+  // https://github.com/bahmutov/cypress-json-results/issues/9
+  it('merges options with defaults incorrectly', () => {
+    let options = {
+      on: 'on',
+    }
+    const defaults = {
+      filename: 'results.json',
+    }
+    options = { ...options, defaults }
+    expect(options).to.deep.equal({
+      on: 'on',
+      defaults,
+    })
+  })
+
+  it('merges options with defaults', () => {
+    let options = {
+      on: 'on',
+    }
+    const defaults = {
+      filename: 'results.json',
+    }
+    options = { ...defaults, ...options }
+    expect(options).to.deep.equal({
+      on: 'on',
+      filename: 'results.json',
+    })
+  })
+
+  it('sets filename', () => {
+    let options = {
+      on: 'on',
+      filename: 'output.json',
+    }
+    const defaults = {
+      filename: 'results.json',
+    }
+    options = { ...defaults, ...options }
+    expect(options).to.deep.equal({
+      on: 'on',
+      filename: 'output.json',
+    })
+  })
+})
