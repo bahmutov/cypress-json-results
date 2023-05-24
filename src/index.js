@@ -4,7 +4,7 @@
 const fs = require('fs')
 const { updateText } = require('./update-text')
 const ghCore = require('@actions/core')
-const { getStateEmoji } = require('./utils')
+const { getSpecEmoji } = require('./utils')
 
 function registerCypressJsonResults(options = {}) {
   const defaults = {
@@ -73,7 +73,7 @@ function registerCypressJsonResults(options = {}) {
       const specs = Object.keys(allResults)
       const specRows = specs.map((specName) => {
         const specState = allResults[specName]
-        const emoji = getStateEmoji(specState)
+        const emoji = getSpecEmoji(specState)
         console.log('%s %s %s', specName, specState, emoji)
         return [specName, emoji]
       })

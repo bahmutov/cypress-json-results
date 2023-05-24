@@ -8,4 +8,17 @@ function getStateEmoji(state) {
   return emoji[state] || '🤷'
 }
 
-module.exports = { getStateEmoji }
+/**
+ * Receives an object of "test name": "state"
+ * and returns a single emoji for passing or failing.
+ */
+function getSpecEmoji(testResults) {
+  const failed = Object.values(testResults).includes('failed')
+  if (failed) {
+    return '❌'
+  }
+  const passed = Object.values(testResults).includes('passed')
+  return passed ? '✅' : '✋'
+}
+
+module.exports = { getStateEmoji, getSpecEmoji }
