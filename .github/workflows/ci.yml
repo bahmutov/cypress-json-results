@@ -5,17 +5,18 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run tests 🧪
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
 
       - name: Show the saved JSON file 🗄
         run: cat results.json
 
       - name: Semantic Release 🚀
-        uses: cycjimmy/semantic-release-action@v2
+        if: github.ref == 'refs/heads/main'
+        uses: cycjimmy/semantic-release-action@v3
         with:
           branch: main
         env:
