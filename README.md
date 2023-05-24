@@ -59,7 +59,9 @@ require('cypress-json-results')({
 })
 ```
 
-Note: the plugin assumes the output folder already exists
+**Note:** the plugin assumes the output folder already exists
+
+You can disable writing a file by using the option `filename: false`.
 
 ### updateMarkdownFile
 
