@@ -107,6 +107,8 @@ Value `githubActionsSummary: 'spec'` writes a single row per spec file.
 
 Value `githubActionsSummary: 'test'` writes a single row per test.
 
+![Tests table](./images/tests.png)
+
 ## Cypress test counts
 
 This repo has the following test numbers:
