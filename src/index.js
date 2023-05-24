@@ -74,6 +74,7 @@ function registerCypressJsonResults(options = {}) {
       const specRows = specs.map((specName) => {
         const specState = allResults[specName]
         const emoji = getStateEmoji(specState)
+        console.log('%s %s %s', specName, specState, emoji)
         return [specName, emoji]
       })
 
