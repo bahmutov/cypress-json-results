@@ -43,9 +43,15 @@ function registerCypressJsonResults(options = {}) {
       skipped: afterRun.totalSkipped,
     }
 
-    const str = JSON.stringify(allResults, null, 2)
-    fs.writeFileSync(options.filename, str + '\n')
-    console.log('cypress-json-results: wrote results to %s', options.filename)
+    if (options.filename === false) {
+      console.log(
+        'cypress-json-results: skipped writing because filename=false',
+      )
+    } else {
+      const str = JSON.stringify(allResults, null, 2)
+      fs.writeFileSync(options.filename, str + '\n')
+      console.log('cypress-json-results: wrote results to %s', options.filename)
+    }
 
     if (options.updateMarkdownFile) {
       const markdownFile = options.updateMarkdownFile
