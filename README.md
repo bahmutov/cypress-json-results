@@ -1,4 +1,4 @@
-# cypress-json-results [![Build status][ci image]][ci url] [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-9.5.3-brightgreen)
+# cypress-json-results [![Build status][ci image]][ci url] [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-12.13.0-brightgreen)
 
 > Saves Cypress test results as a JSON file
 
