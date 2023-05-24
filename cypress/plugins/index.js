@@ -13,5 +13,6 @@ module.exports = (on, config) => {
     on,
     filename: 'results.json',
     updateMarkdownFile: 'README.md',
+    githubActionsSummary: 'spec',
   })
 }

@@ -1,7 +1,10 @@
 /// <reference types="cypress" />
+// @ts-check
 
 const fs = require('fs')
 const { updateText } = require('./update-text')
+const ghCore = require('@actions/core')
+const { getSpecEmoji } = require('./utils')
 
 function registerCypressJsonResults(options = {}) {
   const defaults = {
@@ -62,6 +65,34 @@ function registerCypressJsonResults(options = {}) {
         'cypress-json-results: updated Markdown file %s',
         markdownFile,
       )
+    }
+
+    // https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
+    if (options.githubActionsSummary === 'spec') {
+      delete allResults.totals
+      const specs = Object.keys(allResults)
+      const specRows = specs.map((specName) => {
+        const specState = allResults[specName]
+        const emoji = getSpecEmoji(specState)
+        console.log('%s %s %s', specName, specState, emoji)
+        return [specName, emoji]
+      })
+
+      const specsWord = specs.length === 1 ? 'spec' : 'specs'
+      ghCore.summary
+        .addHeading(`${specs.length} ${specsWord}`)
+        .addTable([
+          [
+            { data: 'Spec', header: true },
+            { data: 'State', header: true },
+          ],
+          ...specRows,
+        ])
+        .addLink(
+          'bahmutov/cypress-json-results',
+          'https://github.com/bahmutov/cypress-json-results',
+        )
+        .write()
     }
   })
 }
