@@ -4,7 +4,7 @@
 const fs = require('fs')
 const { updateText } = require('./update-text')
 const ghCore = require('@actions/core')
-const { getSpecEmoji } = require('./utils')
+const { getSpecEmoji, getStateEmoji } = require('./utils')
 
 function registerCypressJsonResults(options = {}) {
   const defaults = {
@@ -74,7 +74,6 @@ function registerCypressJsonResults(options = {}) {
       const specRows = specs.map((specName) => {
         const specState = allResults[specName]
         const emoji = getSpecEmoji(specState)
-        console.log('%s %s %s', specName, specState, emoji)
         return [specName, emoji]
       })
 
@@ -88,6 +87,33 @@ function registerCypressJsonResults(options = {}) {
           ],
           ...specRows,
         ])
+        .addLink(
+          'bahmutov/cypress-json-results',
+          'https://github.com/bahmutov/cypress-json-results',
+        )
+        .write()
+    } else if (options.githubActionsSummary === 'test') {
+      delete allResults.totals
+      const specs = Object.keys(allResults)
+      const specRows = []
+      specs.forEach((specName) => {
+        const tests = allResults[specName]
+        const testNames = Object.keys(tests)
+        const testN = testNames.length
+        specRows.push([
+          { data: specName, header: true },
+          { data: String(testN), header: true },
+        ])
+        testNames.forEach((testTitle) => {
+          const testState = tests[testTitle]
+          const emoji = getStateEmoji(testState)
+          specRows.push([testTitle, emoji])
+        })
+      })
+
+      ghCore.summary
+        .addHeading('Individual test results')
+        .addTable([...specRows])
         .addLink(
           'bahmutov/cypress-json-results',
           'https://github.com/bahmutov/cypress-json-results',

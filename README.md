@@ -103,6 +103,12 @@ require('cypress-json-results')({
 
 Value `githubActionsSummary: 'spec'` writes a single row per spec file.
 
+![Spec table](./images/spec.png)
+
+Value `githubActionsSummary: 'test'` writes a single row per test.
+
+![Tests table](./images/tests.png)
+
 ## Cypress test counts
 
 This repo has the following test numbers:
