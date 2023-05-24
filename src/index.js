@@ -97,9 +97,14 @@ function registerCypressJsonResults(options = {}) {
       const specs = Object.keys(allResults)
       const specRows = []
       specs.forEach((specName) => {
-        specRows.push([{ data: specName, header: true }])
         const tests = allResults[specName]
-        Object.keys(tests).forEach((testTitle) => {
+        const testNames = Object.keys(tests)
+        const testN = testNames.length
+        specRows.push([
+          { data: specName, header: true },
+          { data: String(testN), header: true },
+        ])
+        testNames.forEach((testTitle) => {
           const testState = tests[testTitle]
           const emoji = getStateEmoji(testState)
           specRows.push([testTitle, emoji])
