@@ -89,6 +89,20 @@ Tip: prevent the Prettier from messing with the formatting by surrounding the ta
 <!-- prettier-ignore-end -->
 ```
 
+## githubActionsSummary
+
+If you are running the tests using [GitHub Actions](https://glebbahmutov.com/blog/trying-github-actions), you can output a summary table.
+
+```js
+require('cypress-json-results')({
+  on,
+  filename: false, // do not write JSON file
+  githubActionsSummary: 'spec',
+})
+```
+
+Value `githubActionsSummary: 'spec'` writes a single row per spec file.
+
 ## Cypress test counts
 
 This repo has the following test numbers:
