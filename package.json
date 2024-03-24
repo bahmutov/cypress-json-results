@@ -18,7 +18,7 @@
   "devDependencies": {
     "cypress": "12.13.0",
     "prettier": "2.5.1",
-    "semantic-release": "19.0.2"
+    "semantic-release": "23.0.6"
   },
   "repository": {
     "type": "git",
