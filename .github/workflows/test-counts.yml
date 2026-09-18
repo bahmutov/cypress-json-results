@@ -14,7 +14,7 @@ jobs:
 
       - name: Run tests 🧪
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v7.4.4
 
       # Always run these steps, even if the Cypress tests have failed
       # https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idstepsif

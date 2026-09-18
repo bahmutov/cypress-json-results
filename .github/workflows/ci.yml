@@ -9,7 +9,7 @@ jobs:
 
       - name: Run tests 🧪
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7.4.4
 
       - name: Show the saved JSON file 🗄
         run: cat results.json
